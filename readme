@@ -1,0 +1,9 @@
+### 🔐 Environment Setup
+
+1. Copy `config/db.sample.php` to `config/db.php`
+2. Use Render or `.env` to securely pass DB credentials via environment variables:
+   - `DB_HOST`
+   - `DB_NAME`
+   - `DB_USER`
+   - `DB_PASS`
+   - `DB_PORT`
