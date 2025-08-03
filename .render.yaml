@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: php-messaging
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        value: aws-0-us-west-1.pooler.supabase.com
+      - key: DB_NAME
+        value: postgres
+      - key: DB_USER
+        value: postgres.achaofrjkmdxoroyiasf
+      - key: DB_PASS
+        value: ProjectMania2025!
+      - key: DB_PORT
+        value: 6543
