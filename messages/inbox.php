@@ -1,9 +1,10 @@
 <?php
 
 session_start();
-require '../config/db.php';
+// require '../config/db.php';
+require dirname(__DIR__) . '/config/db.php';
 
-if( $isset($_SESSION['user_id'])) {
+if(!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
     exit;
 }
@@ -22,7 +23,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <li>
             <strong><?= htmlspecialchars($msg['sender']) ?>:</strong>
             <?= htmlspecialchars($msg['message']) ?> 
-                <em>(<?= msg['sent_at'] ?>)</em>
+                <em>(<?= $msg['sent_at'] ?>)</em>
         </li>
     <?php endforeach; ?>
 </ul>

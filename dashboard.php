@@ -1,10 +1,27 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }
 ?>
+
+<?php if(!empty($_SESSION['error'])): ?>
+    <div style="color: red;">
+        <?= $_SESSION['error']; ?>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
+
+<?php if(!empty($_SESSION['database_message'])): ?>
+    <div style="color: green;">
+        <?= $_SESSION['database_message']; ?>
+    </div>
+    <?php unset($_SESSION['database_message']); ?>
+<?php endif; ?>
+
+
 <h1>Welcome, <?= htmlspecialchars($_SESSION['username']) ?></h1>
 
 <a href="auth/logout.php">Logout</a>

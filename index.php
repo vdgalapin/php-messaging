@@ -1,4 +1,11 @@
 <?php session_start(); ?>
+<?php if(!empty($_SESSION['error'])): ?>
+    <div style="color: red;">
+        <?= $_SESSION['error']; ?>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
+
 <h2>Login</h2>
 <form method="POST" action="auth/Login.php">
     <input type="text" name="username" placeholder="Username" reqruired><br>

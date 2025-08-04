@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-require '../config/db.php';
+// require '../config/db.php';
+require dirname(__DIR__) . '/config/db.php';
 
 if(!isset($_SESSION['user_id'])) {
     header("Location: ../login.php");
@@ -18,7 +19,7 @@ $stmt = $pdo->prepare("
     ORDER BY sent_at DESC
     LIMIT 10");
 $stmt->execute([$user_id]);
-$messages = $stmt->fetchALL(PDO:FETCH_ASSOC);
+$messages = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 header("Content-Type: application/json");
 echo json_encode($messages);

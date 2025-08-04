@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-require '../config/db.php';
+// require '../config/db.php';
+require dirname(__DIR__) . '/config/db.php';
 
 if(!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
@@ -17,7 +18,7 @@ $stmt = $pdo->prepare("
     WHERE sender_id = ?
     ORDER BY sent_at DESC");
 $stmt->execute([$user_id]);
-$messages = $stmt->fetchAll(PDO:FETCH_ASSOC);
+$messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 

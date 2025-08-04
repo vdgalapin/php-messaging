@@ -1,6 +1,8 @@
 <?php
 session_start();
-require '../config/db.php';
+// require '../config/db.php';
+require dirname(__DIR__) . '/config/db.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
@@ -11,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$username, $password]);
         $_SESSION['user_id'] = $pdo->lastInsertId();
         $_SESSION['username'] = $username;
-        header("Location: ../welcome.php");
+        header("Location: ../dashboard.php");
         
     } catch (PDOExecption $e) {
         die("Registration failed: " . $e->getMessage());
