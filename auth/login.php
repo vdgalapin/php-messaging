@@ -13,13 +13,23 @@ if (file_exists($dbFile)) {
     $db   = getenv('DB_NAME');
     $user = getenv('DB_USER');
     $pass = getenv('DB_PASS');
-    $port = getenv('DB_PORT') ?: 6543;
-
+    $port = getenv('DB_PORT');
     try {
-        $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
+        $dsn = "pgsql:host=$host;port=$port;dbname=$db;sslmode=require";
+
+        $pdo = new PDO($dsn, $user, $pass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
-        die("DB connection failed: " . $e->getMessage());
+        echo "<pre>";
+    var_dump([
+        'host' => $host,
+        'port' => $port,
+        'db'   => $db,
+        'user' => $user,
+        'pass' => $pass,
+    ]);
+    echo "</pre>";
+    die("❌ DB connection failed: " . $e->getMessage());
     }
 }
 
