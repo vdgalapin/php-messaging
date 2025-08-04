@@ -3,7 +3,7 @@ $host = getenv('DB_HOST');
 $db = getenv('DB_NAME');
 $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
-$port = getenv('DB_PORT') ?: 5432;
+$port = getenv('DB_PORT') ?: 6543;
 
 try {
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
