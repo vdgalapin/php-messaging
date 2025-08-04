@@ -6,12 +6,10 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        value: aws-0-us-west-1.pooler.supabase.com
+        sync: false
       - key: DB_NAME
-        value: postgres
+        sync: false
       - key: DB_USER
-        value: postgres.achaofrjkmdxoroyiasf
+        sync: false
       - key: DB_PASS
-        value: ProjectMania2025!
-      - key: DB_PORT
-        value: 6543
+        sync: false
