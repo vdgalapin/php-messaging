@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: php-messaging
+    env: docker
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: apache2-foreground
